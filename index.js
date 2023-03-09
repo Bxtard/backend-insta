@@ -12,15 +12,12 @@ const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 app.listen(PORT, async () => {
-  // Configure express
   app.use(cors());
   app.use(express.json());
   app.use(morgan('dev'));
 
-  // Connect to database
   await connectDb();
 
-  // Configure routes
   app.get('/', (req, res) => {
     return res.status(200).json({ message: 'OK' });
   });
